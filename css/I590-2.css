@@ -1,0 +1,57 @@
+body {
+	padding-top: 60px;
+}
+.panel-title {
+	font-size: 14px;
+}
+
+
+.counties {
+  fill: none;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+/*orange only colors */
+
+.b0-9 { fill:#fff5eb; }
+.b1-9 { fill:#fee6ce; }
+.b2-9 { fill:#fdd0a2; }
+.b3-9 { fill:#fdae6b; }
+.b4-9 { fill:#fd8d3c; }
+.b5-9 { fill:#f16913; }
+.b6-9 { fill:#d94801; }
+.b7-9 { fill:#a63603; }
+.b8-9 { fill:#7f2704; }
+
+/*orange/yellow/brown colors 
+*/
+
+.q0-9 { fill:#ffffe5; }
+.q1-9 { fill:#fff7bc; }
+.q2-9 { fill:#fee391; }
+.q3-9 { fill:#fec44f; }
+.q4-9 { fill:#fe9929; }
+.q5-9 { fill:#ec7014; }
+.q6-9 { fill:#cc4c02; }
+.q7-9 { fill:#993404; }
+.q8-9 { fill:#662506; }
+
+/* legend CSS */
+
+#legend {
+    padding: 1.5em 0 0 1.5em;
+}
+
+li.key {
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+}
