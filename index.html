@@ -61,20 +61,20 @@
 
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <h4 class="panel-title">Panel 1</h4>
+                        <h4 class="panel-title">States Map</h4>
                       </div>
                       <div class="panel-body">
-                        Panel content 1
+                        <a href="map.html">Full Screen map</a>
                       </div>
                     </div>
 
 
                      <div class="panel panel-default">
                       <div class="panel-heading">
-                        <h4 class="panel-title">Panel 2</h4>
+                        <h4 class="panel-title">Counties Map</h4>
                       </div>
                       <div class="panel-body">
-                        Panel content 2
+                        <a href="map1.html">Full Screen map</a>
                       </div>
                     </div>
 
@@ -102,86 +102,9 @@
 
 
 
-              <div class="col-xs-12 col-md-8">
-        
-     <!-- legend -->           
-      <div id="legend"> </div>
-
-
-        <svg id="map" width="760" height="500"></svg>
-<script src="//d3js.org/d3.v4.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script>
-//testing code
-var legend = d3.select('#legend')
-  .append('ul')
-    .attr('class', 'list-inline');
-
-var formats = {
-    percent: d3.format('.2%')
-};
-
-var margin = {top: 10, left: 10, bottom: 10, right: 10}
-  , width = parseInt(d3.select('#map').style('width'))
-  , width = width - margin.left - margin.right
-  , mapRatio = .5
-  , height = width * mapRatio;
-
-//example map code
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
-
-var rateById = d3.map();
-
-var quantize = d3.scaleQuantize()
-    .domain([0, 0.15])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
-
-var projection = d3.geoAlbersUsa()
-    .scale(width)
-    .translate([width / 2, height / 2]);
-
-var path = d3.geoPath()
-    .projection(projection);
-
-d3.queue()
-    .defer(d3.json, "data/us.json")
-    .defer(d3.tsv, "data/unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
-    .await(ready);
-
-function ready(error, us) {
-  if (error) throw error;
-
-  svg.append("g")
-      .attr("class", "counties")
-    .selectAll("path")
-      .data(topojson.feature(us, us.objects.counties).features)
-    .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
-      .attr("d", path);
-
-  svg.append("path")
-      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-      .attr("class", "states")
-      .attr("d", path);
-}
-//legend code
-
-var keys = legend.selectAll('li.key')
-    .data(quantize.range());
-
-keys.enter().append('li')
-    .attr('class', 'key')
-    .style('border-top-color', String)
-    .text(function(d) {
-        var r = quantize.invertExtent(d);
-        return formats.percent(r[0]);
-    });
-    
-//resize code
-
-</script>
+              <div class="col-xs-12 col-md-8">        
+     <iframe id="states" height="530px" width="100%" frameborder="0" scrolling="no" src="map.html" style="padding: 10px 0;">
+    </iframe>
 
              </div> <!-- /.col-md-8 -->
 
